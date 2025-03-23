@@ -1,7 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Question } from 'src/features/questions/entity/questions.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('quizes')
 export class Quiz {
+  [x: string]: any;
   @PrimaryGeneratedColumn({
     comment: 'The quiz unique identifier',
   })
@@ -22,4 +24,7 @@ export class Quiz {
     default: 1,
   })
   isActive: boolean;
+
+  @OneToMany(() => Question, (question) => question.quiz)
+  questions: Question[];
 }
