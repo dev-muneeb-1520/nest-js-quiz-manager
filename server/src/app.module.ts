@@ -7,7 +7,6 @@ import { QuestionModule } from './features/questions/questions.module';
 
 @Module({
   imports: [
-    QuizModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -16,6 +15,7 @@ import { QuestionModule } from './features/questions/questions.module';
       inject: [ConfigService],
       useFactory: typeOrmConfig,
     }),
+    QuizModule,
     QuestionModule,
   ],
 })
